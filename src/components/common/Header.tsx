@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
-import { User } from 'lucide-react';
+import { User, LogOut } from 'lucide-react';
+import { useAuthStore } from '../../states/authStore';
 
 const navigation = [
   { name: 'Home', path: '/' },
@@ -16,6 +17,25 @@ const navigation = [
 export const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { user, isAuthenticated, logout } = useAuthStore();
+
+  const handleUserIconClick = () => {
+    if (isAuthenticated) {
+      navigate('/about');
+    } else {
+      navigate('/login');
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4">
@@ -39,8 +59,30 @@ export const Header = () => {
           <div className="flex items-center space-x-4">
             <ThemeToggle />
             <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
-              <span>Lyckabc</span>
-              <User size={20} className="cursor-pointer" onClick={() => navigate('/login')}/>
+              {isAuthenticated ? (
+                <>
+                  <span>{user?.username}</span>
+                  <User 
+                    size={20} 
+                    className="cursor-pointer hover:text-blue-500" 
+                    onClick={handleUserIconClick}
+                  />
+                  <LogOut 
+                    size={20} 
+                    className="cursor-pointer hover:text-red-500" 
+                    onClick={handleLogout}
+                  />
+                </>
+              ) : (
+                <>
+                  <span>Guest</span>
+                  <User 
+                    size={20} 
+                    className="cursor-pointer hover:text-blue-500" 
+                    onClick={handleUserIconClick}
+                  />
+                </>
+              )}
             </div>
           </div>
         </div>
