@@ -55,7 +55,7 @@ jobs:
       - name: Login to Private Docker Registry
         uses: docker/login-action@v3
         with:
-          registry: http://toji.iptime.org:5001
+          registry: toji.iptime.org:5001
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
@@ -90,7 +90,7 @@ jobs:
       - name: Login to Private Docker Registry
         uses: docker/login-action@v3
         with:
-          registry: http://toji.iptime.org:5001
+          registry: toji.iptime.org:5001
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
@@ -108,7 +108,7 @@ jobs:
       - name: Deploy to Staging Server
         uses: appleboy/ssh-action@master
         with:
-          host: http://toji.iptime.org
+          host: toji.iptime.org
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
