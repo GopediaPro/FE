@@ -51,6 +51,8 @@ jobs:
             "insecure-registries": ["toji.iptime.org:5001"],
             "debug": true
           }' | sudo tee /etc/docker/daemon.json
+          sudo mkdir -p /etc/docker/certs.d/toji.iptime.org:5001
+          echo "${{ secrets.REGISTRY_CERT }}" | sudo tee /etc/docker/certs.d/toji.iptime.org:5001/ca.crt > /dev/null
           sudo systemctl restart docker
 
       - name: Set up Docker Buildx
@@ -90,6 +92,8 @@ jobs:
             "insecure-registries": ["toji.iptime.org:5001"],
             "debug": true
           }' | sudo tee /etc/docker/daemon.json
+          sudo mkdir -p /etc/docker/certs.d/toji.iptime.org:5001
+          echo "${{ secrets.REGISTRY_CERT }}" | sudo tee /etc/docker/certs.d/toji.iptime.org:5001/ca.crt > /dev/null
           sudo systemctl restart docker
 
       - name: Set up Docker Buildx
