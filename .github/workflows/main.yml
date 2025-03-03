@@ -64,7 +64,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: toji.iptime.org:5001/gopediafe:latest
+          tags: http://toji.iptime.org:5001/gopediafe:latest
           target: production
           build-args: |
             VITE_API_URL=${{ secrets.VITE_API_URL }}
@@ -99,7 +99,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: toji.iptime.org:5001/gopediafe:staging
+          tags: http://toji.iptime.org:5001/gopediafe:staging
           target: production
           build-args: |
             VITE_API_URL=${{ secrets.VITE_API_URL }}
