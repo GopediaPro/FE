@@ -50,7 +50,7 @@ jobs:
       - name: Login to Private Docker Registry
         uses: docker/login-action@v3
         with:
-          registry: 192.168.0.11:5001
+          registry: http://192.168.0.11:5001
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
@@ -80,7 +80,7 @@ jobs:
       - name: Login to Private Docker Registry
         uses: docker/login-action@v3
         with:
-          registry: 192.168.0.11:5001
+          registry: http://192.168.0.11:5001
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
