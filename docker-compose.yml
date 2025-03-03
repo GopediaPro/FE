@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    image: 192.168.0.11:5001/gopediafe:dev
+    image: toji.iptime.org:5001/gopediafe:dev
     container_name: gopediafe-dev
     ports:
       - "3000:3000"
@@ -19,7 +19,7 @@ services:
     networks:
       - gopedia-network
     extra_hosts:
-      - "registry-server:192.168.0.11"
+      - "registry-server:toji.iptime.org"
 
   prod:
     build:
@@ -28,7 +28,7 @@ services:
       args:
         - VITE_API_URL=${VITE_API_URL}
         - VITE_BACKEND_API_VERSION=${VITE_BACKEND_API_VERSION}
-    image: 192.168.0.11:5001/gopediafe:prod
+    image: toji.iptime.org:5001/gopediafe:prod
     container_name: gopediafe-prod
     ports:
       - "80:80"
@@ -36,7 +36,7 @@ services:
     networks:
       - gopedia-network
     extra_hosts:
-      - "registry-server:192.168.0.11"
+      - "registry-server:toji.iptime.org"
 
 networks:
   gopedia-network:
