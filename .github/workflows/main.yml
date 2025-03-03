@@ -55,7 +55,7 @@ jobs:
       - name: Login to Private Docker Registry
         uses: docker/login-action@v3
         with:
-          registry: http://192.168.0.11:5001
+          registry: http://toji.iptime.org:5001
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
@@ -64,7 +64,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: 192.168.0.11:5001/gopediafe:latest
+          tags: toji.iptime.org:5001/gopediafe:latest
           target: production
           build-args: |
             VITE_API_URL=${{ secrets.VITE_API_URL }}
@@ -78,7 +78,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Configure Docker daemon for insecure registry
         run: |
           echo '{ "insecure-registries":["192.168.0.11:5001"] }' | sudo tee /etc/docker/daemon.json
@@ -90,7 +90,7 @@ jobs:
       - name: Login to Private Docker Registry
         uses: docker/login-action@v3
         with:
-          registry: http://192.168.0.11:5001
+          registry: http://toji.iptime.org:5001
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
@@ -99,7 +99,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: 192.168.0.11:5001/gopediafe:staging
+          tags: toji.iptime.org:5001/gopediafe:staging
           target: production
           build-args: |
             VITE_API_URL=${{ secrets.VITE_API_URL }}
