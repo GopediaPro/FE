@@ -1,4 +1,3 @@
-import React from 'react';
 import { useThemeStore } from '../../states/themeStore';
 import { Sun, Moon } from 'lucide-react';
 

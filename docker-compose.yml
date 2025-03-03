@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: 192.168.0.11:5001/gopediafe:dev
+    container_name: gopediafe-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=${VITE_API_URL}
+      - VITE_BACKEND_API_VERSION=${VITE_BACKEND_API_VERSION}
+    networks:
+      - gopedia-network
+    extra_hosts:
+      - "registry-server:192.168.0.11"
+
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=${VITE_API_URL}
+        - VITE_BACKEND_API_VERSION=${VITE_BACKEND_API_VERSION}
+    image: 192.168.0.11:5001/gopediafe:prod
+    container_name: gopediafe-prod
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    networks:
+      - gopedia-network
+    extra_hosts:
+      - "registry-server:192.168.0.11"
+
+networks:
+  gopedia-network:
+    driver: bridge

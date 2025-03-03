@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { PageLayout } from '../layouts/PageLayout';
@@ -13,7 +12,6 @@ interface RegisterFormData extends RegisterCredentials {
 const Register = () => {
   const BACKEND_API_URL = import.meta.env.VITE_API_URL;
   const BACKEND_API_VERSION = import.meta.env.VITE_BACKEND_API_VERSION;
-  const BACKEND_API_REGISTER_URL = `${BACKEND_API_URL}${BACKEND_API_VERSION}/auth/register`;
   const navigate = useNavigate();
   const { register: registerUser } = useAuthStore();
   const { register, handleSubmit, formState: { errors }, watch } = useForm<RegisterFormData>({

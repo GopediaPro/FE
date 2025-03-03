@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker:dev": "docker-compose up gopediafe-dev",
+    "docker:build": "docker-compose build gopediafe-prod",
+    "docker:prod": "docker-compose up -d gopediafe-prod"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
