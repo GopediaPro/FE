@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint": "eslint src/**/*.ts",
     "preview": "vite preview",
     "docker:dev": "docker-compose up gopediafe-dev",
     "docker:build": "docker-compose build gopediafe-prod",
