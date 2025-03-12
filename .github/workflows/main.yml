@@ -31,9 +31,9 @@ jobs:
 
       - name: Build application
         run: npm run build
-        env:
-          VITE_API_URL: ${{ secrets.VITE_API_URL }}
-          VITE_BACKEND_API_VERSION: ${{ secrets.VITE_BACKEND_API_VERSION }}
+        # env:
+        #   VITE_API_URL: ${{ secrets.VITE_API_URL }}
+        #   VITE_BACKEND_API_VERSION: ${{ secrets.VITE_BACKEND_API_VERSION }}
 
   # Docker build and push (only for main branch)
   docker-build-and-push:
@@ -61,9 +61,9 @@ jobs:
           push: true
           tags: lyckabc.xyz/registry/gopediafe:latest
           target: production
-          build-args: |
-            VITE_API_URL=${{ secrets.VITE_API_URL }}
-            VITE_BACKEND_API_VERSION=${{ secrets.VITE_BACKEND_API_VERSION }}
+          # build-args: |
+          #   VITE_API_URL=${{ secrets.VITE_API_URL }}
+          #   VITE_BACKEND_API_VERSION=${{ secrets.VITE_BACKEND_API_VERSION }}
 
   # Deploy to staging (only for develop branch)
   deploy-staging:
@@ -91,9 +91,9 @@ jobs:
           push: true
           tags: lyckabc.xyz/registry/gopediafe:staging
           target: production
-          build-args: |
-            VITE_API_URL=${{ secrets.VITE_API_URL }}
-            VITE_BACKEND_API_VERSION=${{ secrets.VITE_BACKEND_API_VERSION }}
+          # build-args: |
+          #   VITE_API_URL=${{ secrets.VITE_API_URL }}
+          #   VITE_BACKEND_API_VERSION=${{ secrets.VITE_BACKEND_API_VERSION }}
 
       - name: Deploy to Staging Server
         uses: appleboy/ssh-action@master

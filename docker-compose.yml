@@ -14,8 +14,8 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
-      - VITE_API_URL=${VITE_API_URL}
-      - VITE_BACKEND_API_VERSION=${VITE_BACKEND_API_VERSION}
+      # - VITE_API_URL=${VITE_API_URL}
+      # - VITE_BACKEND_API_VERSION=${VITE_BACKEND_API_VERSION}
     networks:
       - gopedia-network
     extra_hosts:
@@ -25,9 +25,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        - VITE_API_URL=${VITE_API_URL}
-        - VITE_BACKEND_API_VERSION=${VITE_BACKEND_API_VERSION}
+      # args:
+      #   - VITE_API_URL=${VITE_API_URL}
+      #   - VITE_BACKEND_API_VERSION=${VITE_BACKEND_API_VERSION}
     image: lyckabc.xyz/registry/gopediafe:prod
     container_name: gopediafe-prod
     ports:
