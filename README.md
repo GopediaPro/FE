@@ -24,3 +24,7 @@
 
 # run the app Port dev : 5173
 npm run dev
+
+# docker build & push tag manage
+docker build -t lyckabc.xyz/registry/gopediafe:latest .
+

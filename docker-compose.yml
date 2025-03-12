@@ -11,7 +11,7 @@ services:
       - "3000:3000"
     volumes:
       - .:/app
-      - /app/node_modules
+      - node_modules_volume:/app/node_modules
     environment:
       - NODE_ENV=development
       # - VITE_API_URL=${VITE_API_URL}
@@ -20,6 +20,9 @@ services:
       - gopedia-network
     extra_hosts:
       - "registry-server:172.17.0.1"
+      
+volumes:
+node_modules_volume:
 
   prod:
     build:
