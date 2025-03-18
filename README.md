@@ -26,5 +26,12 @@
 npm run dev
 
 # docker build & push tag manage
-docker build -t lyckabc.xyz/registry/gopediafe:latest .
+docker build -t lyckabc.xyz/registry/gopediafe:dev .
+docker push lyckabc.xyz/registry/gopediafe:dev
 
+# nohup tip
+nohup npm run dev &
+# if you want to terminate nohup PID 79114
+lsof -i :3000
+kill -9 79114
+lsof -i :3000
